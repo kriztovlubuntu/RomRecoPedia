@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Oficial - OasisOS</title>
+    <style>
+        /* Estética oscura coherente con el sitio principal */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #ffffff;
+            border-bottom: 2px solid #2ea44f;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b3b3b3;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #2ea44f;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Estilo de los bloques de código o comandos de terminal */
+        pre {
+            background-color: #1e1e1e;
+            border-left: 4px solid #2ea44f;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-radius: 4px;
+            color: #85e89d;
+        }
+
+        /* Tarjetas de navegación de la Wiki */
+        .wiki-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .wiki-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .wiki-card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #2d2d2d;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .wiki-card:hover {
+            transform: translateY(-2px);
+            border-color: #2ea44f;
+        }
+
+        .wiki-card h3 {
+            margin-top: 0;
+            color: #2ea44f;
+            font-size: 1.4rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #b3b3b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            color: #2ea44f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Wiki de OasisOS</h1>
+        <p class="subtitle">Documentación oficial, guías de instalación y manuales de desarrollo del proyecto.</p>
+
+        <p>Bienvenido a la base de conocimientos de OasisOS. Aquí encontrarás todo lo necesario para flashear el sistema, usar las herramientas de modificación y resolver los problemas más comunes.</p>
+
+        <div class="wiki-grid">
+            <div class="wiki-card">
+                <h3>🚀 Guía de Instalación</h3>
+                <p>Aprende los pasos fundamentales para preparar tu dispositivo y flashear las imágenes ligeras del sistema de forma segura.</p>
+            </div>
+
+            <div class="wiki-card">
+                <h3>🛠️ Oasis Builder / Kitchen</h3>
+                <p>Manual de uso de las herramientas de desarrollo en Python. Cómo desempaquetar, limpiar (de-bloat) y reconstruir imágenes ROM.</p>
+            </div>
+
+            <div class="wiki-card">
+                <h3>📝 Modificaciones y Tweaks</h3>
+                <p>Guías avanzadas sobre edición de archivos de configuración, personalización de la interfaz y optimización extrema.</p>
+            </div>
+
+            <div class="wiki-card">
+                <h3>🔍 Solución de Problemas (FAQ)</h3>
+                <p>Respuestas rápidas a los errores más comunes de terminal, reconocimiento de dispositivos y fallas de compilación.</p>
+            </div>
+        </div>
+
+        <!-- Enlace para regresar a la web principal -->
+        <a href="https://kriztovlubuntu.github.io/oasisos-web/" class="back-link">← Volver al Sitio Principal</a>
+    </div>
+
+</body>
+</html>
