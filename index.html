@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wiki Oficial - OasisOS</title>
     <style>
-        /* Estética oscura coherente con el sitio principal */
+        /* Fondo claro, limpio y profesional */
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f6f8fa;
+            color: #24292e;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 40px 20px;
             display: flex;
@@ -24,43 +24,30 @@
         }
 
         h1 {
-            font-size: 2.8rem;
-            color: #ffffff;
+            font-size: 2.5rem;
+            color: #1b1f23;
             border-bottom: 2px solid #2ea44f;
             padding-bottom: 10px;
             margin-bottom: 10px;
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            color: #b3b3b3;
+            font-size: 1.1rem;
+            color: #586069;
             margin-bottom: 40px;
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #2ea44f;
             margin-top: 30px;
         }
 
         p {
-            font-size: 1.1rem;
-            color: #e0e0e0;
+            font-size: 1.05rem;
             line-height: 1.6;
         }
 
-        /* Estilo de los bloques de código o comandos de terminal */
-        pre {
-            background-color: #1e1e1e;
-            border-left: 4px solid #2ea44f;
-            padding: 15px;
-            font-family: 'Courier New', Courier, monospace;
-            overflow-x: auto;
-            border-radius: 4px;
-            color: #85e89d;
-        }
-
-        /* Tarjetas de navegación de la Wiki */
         .wiki-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -74,28 +61,159 @@
             }
         }
 
+        /* Tarjetas con fondo blanco nítido y sombras suaves */
         .wiki-card {
-            background-color: #1e1e1e;
+            background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
-            border: 1px solid #2d2d2d;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            border: 1px solid #e1e4e8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
         }
 
         .wiki-card:hover {
             transform: translateY(-2px);
             border-color: #2ea44f;
+            box-shadow: 0 4px 12px rgba(46, 164, 79, 0.15);
         }
 
         .wiki-card h3 {
             margin-top: 0;
             color: #2ea44f;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+        }
+
+        .wiki-card p {
+            color: #586069;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Sección del script con fondo gris de consola clásica */
+        .script-section {
+            display: none;
+            background-color: #ffffff;
+            border: 2px solid #2ea44f;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        pre {
+            background-color: #272822;
+            border-left: 5px solid #2ea44f;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-radius: 6px;
+            color: #f8f8f2; /* Código estilo Monokai para que resalte */
+            font-size: 0.95rem;
         }
 
         .back-link {
             display: inline-block;
             margin-top: 40px;
-            color: #b3b3b3;
+            color: #586069;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        .back-link:hover {
+            color: #2ea44f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Wiki de OasisOS</h1>
+        <p class="subtitle">Documentación oficial, guías de instalación y herramientas del proyecto.</p>
+
+        <p>Bienvenido al centro de soporte técnico. Selecciona una sección para desplegar las guías:</p>
+
+        <div class="wiki-grid">
+            <div class="wiki-card">
+                <h3>🚀 Guía de Instalación</h3>
+                <p>Pasos fundamentales para preparar tu dispositivo y flashear imágenes de sistema.</p>
+            </div>
+
+            <div class="wiki-card" onclick="toggleScript()">
+                <h3>🛠️ Oasis Builder / Debloat ROM (Clic para abrir)</h3>
+                <p>Usa nuestra herramienta en Python para limpiar aplicaciones basura de tus ROMs de forma masiva.</p>
+            </div>
+
+            <div class="wiki-card">
+                <h3>📝 Modificaciones y Tweaks</h3>
+                <p>Edición avanzada de archivos de configuración, optimización y personalización.</p>
+            </div>
+
+            <div class="wiki-card">
+                <h3>🔍 Solución de Problemas (FAQ)</h3>
+                <p>Respuestas rápidas a fallas comunes con terminales, drivers y Fastboot.</p>
+            </div>
+        </div>
+
+        <!-- Bloque interactivo -->
+        <div id="debloat-tool" class="script-section">
+            <h2>Herramienta de Debloat Automatizada (Python)</h2>
+            <p>Este script escanea un directorio de una ROM extraída (por ejemplo, <code>/system/app</code> o <code>/system/priv-app</code>) y remueve las carpetas de bloatware predefinidas para aligerar el sistema de un plumazo.</p>
+            
+            <pre>
+import os
+import shutil
+
+# Lista de aplicaciones basura comunes a remover
+BLOATWARE_LIST = [
+    "Facebook", "FacebookAppManager", "FacebookServices",
+    "YouTube", "Gmail2", "Maps", "Duo", "Photos",
+    "Chrome", "Velvet", "CloudPrint", "Music2", "Videos"
+]
+
+def clean_rom_folder(target_dir):
+    print(f"[*] Escaneando directorio: {target_dir}")
+    if not os.path.exists(target_dir):
+        print("[-] Error: El directorio no existe.")
+        return
+
+    removed_count = 0
+    for folder_name in os.listdir(target_dir):
+        if folder_name in BLOATWARE_LIST:
+            full_path = os.path.join(target_dir, folder_name)
+            try:
+                shutil.rmtree(full_path)
+                print(f"[✓] Eliminado con éxito: {folder_name}")
+                removed_count += 1
+            except Exception as e:
+                print(f"[-] Error al eliminar {folder_name}: {e}")
+                
+    print(f"\n[+] Proceso terminado. Se removieron {removed_count} carpetas de basura.")
+
+if __name__ == "__main__":
+    print("=== OASIS ROM DEBLOATER ===")
+    ruta_rom = input("Introduce la ruta de tu carpeta /app o /priv-app extraída: ").strip()
+    clean_rom_folder(ruta_rom)
+            </pre>
+            <p><strong>Cómo usar:</strong> Abre Thonny en Zorin OS, pega este código, guárdalo como <code>debloat.py</code> y ejecútalo indicando la carpeta a limpiar.</p>
+        </div>
+
+        <a href="https://kriztovlubuntu.github.io/oasisos-web/" class="back-link">← Volver al Sitio Principal</a>
+    </div>
+
+    <script>
+        function toggleScript() {
+            var section = document.getElementById("debloat-tool");
+            if (section.style.display === "block") {
+                section.style.display = "none";
+            } else {
+                section.style.display = "block";
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+
+</body>
+</html>
